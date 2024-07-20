@@ -14,11 +14,14 @@ def compare_data(df1, df2):
     
     if 'Date of Birth' in df1.columns and 'Date of Birth' in df2.columns:
         merged = pd.merge(df1, df2, left_on=['FullName1', 'Date of Birth'], right_on=['FullName2', 'Date of Birth'], how='outer', indicator=True)
+        unmatched = merged[merged['_merge'] != 'both']
+        result_columns = ['First Name_x', 'Last Name_x', 'Date of Birth_x', 'First Name_y', 'Last Name_y', 'Date of Birth_y']
     else:
         merged = pd.merge(df1, df2, left_on=['FullName1'], right_on=['FullName2'], how='outer', indicator=True)
+        unmatched = merged[merged['_merge'] != 'both']
+        result_columns = ['First Name_x', 'Last Name_x', 'First Name_y', 'Last Name_y']
     
-    unmatched = merged[merged['_merge'] != 'both']
-    return unmatched[['First Name_x', 'Last Name_x', 'Date of Birth_x', 'First Name_y', 'Last Name_y', 'Date of Birth_y']]
+    return unmatched[result_columns]
 
 # Function to create a template CSV file
 def create_template_csv():
