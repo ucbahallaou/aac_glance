@@ -25,7 +25,7 @@ def format_df_to_transit(df2):
 # Streamlit app
 st.title('Excel Reformatter App')
 
-uploaded_file = st.file_uploader("Choose an Excel file", type="xlsx")
+uploaded_file = st.file_uploader("Choose an Excel file", type="csv")
 
 if uploaded_file is not None:
     # Read the uploaded file
