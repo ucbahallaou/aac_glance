@@ -25,7 +25,7 @@ def format_df_to_transit(df2):
 # Streamlit app
 st.title('Excel Reformatter App')
 
-uploaded_file = st.file_uploader("Choose an Excel file", type="xlsx")
+uploaded_file = st.file_uploader("Choose an Excel file", type="csv")
 
 if uploaded_file is not None:
     # Read the uploaded file
@@ -44,8 +44,7 @@ if uploaded_file is not None:
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         reformatted_df.to_excel(writer, index=False, sheet_name='Sheet1')
-        writer.save()
-        processed_data = output.getvalue()
+    processed_data = output.getvalue()
 
     st.download_button(
         label="Download Reformatted Excel",
