@@ -9,8 +9,8 @@ def read_file(file):
         return pd.read_excel(file)
 
 def compare_data(df1, df2):
-    df1['FullName1'] = df1['First Name'] + ' ' + df1['Last Name']
-    df2['FullName2'] = df2['First Name'] + ' ' + df2['Last Name']
+    df1['FullName1'] = df1['First Name'].str.lower() + ' ' + df1['Last Name'].str.lower()
+    df2['FullName2'] = df2['First Name'].str.lower() + ' ' + df2['Last Name'].str.lower()
     
     if 'Date of Birth' in df1.columns and 'Date of Birth' in df2.columns:
         merged = pd.merge(df1, df2, left_on=['FullName1', 'Date of Birth'], right_on=['FullName2', 'Date of Birth'], how='outer', indicator=True)
