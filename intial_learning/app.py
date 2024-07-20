@@ -44,8 +44,7 @@ if uploaded_file is not None:
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='openpyxl') as writer:
         reformatted_df.to_excel(writer, index=False, sheet_name='Sheet1')
-        writer.save()
-        processed_data = output.getvalue()
+    processed_data = output.getvalue()
 
     st.download_button(
         label="Download Reformatted Excel",
