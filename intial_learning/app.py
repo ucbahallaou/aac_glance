@@ -29,7 +29,7 @@ uploaded_file = st.file_uploader("Choose an Excel file", type="xlsx")
 
 if uploaded_file is not None:
     # Read the uploaded file
-    df = pd.read_excel(uploaded_file)
+    df = pd.read_csv(uploaded_file)
 
     st.write("Original Data")
     st.write(df)
