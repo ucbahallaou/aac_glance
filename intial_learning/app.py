@@ -19,7 +19,7 @@ def format_df_to_transit(df2):
     df2['Buyer'] = 'HAY'
     df2['paid'] = df2['Total Cost'].apply(lambda x: f'-{x}')
     df2['Sale date'] = df2['Sale date'].apply(lambda x: pd.to_datetime(x).date())
-    return df2[['Year','Make','Model','Exterior color','Interior color','Trim','Odometer','Vin','emp','emp1','emp2','emp3','emp4','emp5','Seller name','Buyer','emp6','Sale date','Total Cost','paid','com','Grade','Vehicle location']]
+    return df2[['Year','Make','Model','Exterior color','Interior color','Trim','Odometer','Vin','emp','emp1','emp2','emp3','emp4','emp5','Vehicle location','Buyer','emp6','Sale date','Total Cost','paid','com','Grade','Seller name']]
 
 
 # Streamlit app
